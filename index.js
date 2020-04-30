@@ -20,7 +20,7 @@ const paginationArray = (dataEntries, settings) => {
 
     const dataEntriesRequrement = dataLength >= entriesOnPage ? (dataLength / entriesOnPage) : 1;
     const actualPageIdxIsCorrect = actualPageIdx > 0 && actualPageIdx <= dataEntriesRequrement
-    const dataEntriesaIsCorrect = dataLength > 0 && isArray
+    const dataEntriesIsCorrect = dataLength > 0 && isArray
     const isEntriesOnPagePositiveInteger = Number.isInteger(entriesOnPage) && entriesOnPage > 0
 
     if (dataEntriesIsCorrect && isEntriesOnPagePositiveInteger) {
