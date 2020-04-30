@@ -1,5 +1,5 @@
 const dataEntries = []
-const numberOfItems = 600
+const numberOfItems = 700
 
 for (let i = 1; i <= numberOfItems; i++) {
     const element = `Element numer: ${i}`
@@ -13,17 +13,31 @@ const settings = {
 
 
 const paginationArray = (dataEntries, settings) => {
-    const { actualPageIdx, entriesOnPage } = settings
-    const indexOfFirstElement = actualPageIdx * entriesOnPage
-    const indexOfLastElement = indexOfFirstElement + entriesOnPage
-    if (indexOfFirstElement > numberOfItems) return alert('Nie mam tylu elementów')
-    else {
-        const entriesOnSelectedPage = dataEntries.slice(indexOfFirstElement, indexOfLastElement)
-        console.log(entriesOnSelectedPage)
-        return entriesOnSelectedPage
 
-    }
+    const { actualPageIdx, entriesOnPage } = settings;
+    const isArray = Array.isArray(dataEntries);
+    const dataLength = dataEntries.length
+    const dataEntriesRequrement = dataLength >= entriesOnPage ? (dataLength / entriesOnPage) : 1;
+
+
+    if (dataLength > 0 && Number.isInteger(entriesOnPage) && entriesOnPage > 0) {
+
+        if (actualPageIdx > 0 && actualPageIdx <= dataEntriesRequrement && isArray) {
+
+            const indexOfFirstElement = (actualPageIdx === 1) ? 0 : ((actualPageIdx - 1) * entriesOnPage)
+
+            const indexOfLastElement = indexOfFirstElement + entriesOnPage
+
+            const entriesOnSelectedPage = dataEntries.slice(indexOfFirstElement, indexOfLastElement)
+            console.log(entriesOnSelectedPage)
+
+            return entriesOnSelectedPage
+
+        } else return alert('Nie mam takiej strony')
+    } else return alert('Długość tablicy lub ilość wyświetlanych elementów na stronie nieprawidłowa')
 
 }
+
+
 
 paginationArray(dataEntries, settings);
