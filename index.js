@@ -19,13 +19,13 @@ const paginationArray = (dataEntries, settings) => {
     const dataLength = dataEntries.length
 
     const dataEntriesRequrement = dataLength >= entriesOnPage ? (dataLength / entriesOnPage) : 1;
-    const actualPageIdxCorrect = actualPageIdx > 0 && actualPageIdx <= dataEntriesRequrement
-    const dataEntriesCorrect = dataLength > 0 && isArray
+    const actualPageIdxIsCorrect = actualPageIdx > 0 && actualPageIdx <= dataEntriesRequrement
+    const dataEntriesaIsCorrect = dataLength > 0 && isArray
     const isEntriesOnPagePositiveInteger = Number.isInteger(entriesOnPage) && entriesOnPage > 0
 
-    if (dataEntriesCorrect && isEntriesOnPagePositiveInteger) {
+    if (dataEntriesIsCorrect && isEntriesOnPagePositiveInteger) {
 
-        if (actualPageIdxCorrect) {
+        if (actualPageIdxIsCorrect) {
 
             const indexOfFirstElement = (actualPageIdx === 1) ? 0 : ((actualPageIdx - 1) * entriesOnPage)
 
