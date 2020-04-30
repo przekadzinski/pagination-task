@@ -17,12 +17,15 @@ const paginationArray = (dataEntries, settings) => {
     const { actualPageIdx, entriesOnPage } = settings;
     const isArray = Array.isArray(dataEntries);
     const dataLength = dataEntries.length
+
     const dataEntriesRequrement = dataLength >= entriesOnPage ? (dataLength / entriesOnPage) : 1;
+    const actualPageIdxCorrect = actualPageIdx > 0 && actualPageIdx <= dataEntriesRequrement
+    const dataEntriesCorrect = dataLength > 0 && isArray
+    const isEntriesOnPagePositiveInteger = Number.isInteger(entriesOnPage) && entriesOnPage > 0
 
+    if (dataEntriesCorrect && isEntriesOnPagePositiveInteger) {
 
-    if (dataLength > 0 && Number.isInteger(entriesOnPage) && entriesOnPage > 0) {
-
-        if (actualPageIdx > 0 && actualPageIdx <= dataEntriesRequrement && isArray) {
+        if (actualPageIdxCorrect) {
 
             const indexOfFirstElement = (actualPageIdx === 1) ? 0 : ((actualPageIdx - 1) * entriesOnPage)
 
@@ -34,6 +37,7 @@ const paginationArray = (dataEntries, settings) => {
             return entriesOnSelectedPage
 
         } else return alert('Nie mam takiej strony')
+
     } else return alert('Długość tablicy lub ilość wyświetlanych elementów na stronie nieprawidłowa')
 
 }
