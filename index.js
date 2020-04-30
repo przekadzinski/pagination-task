@@ -19,8 +19,9 @@ const paginationArray = (dataEntries, settings) => {
     if (indexOfFirstElement > numberOfItems) return alert('Nie mam tylu elementów')
     else {
         const entriesOnSelectedPage = dataEntries.slice(indexOfFirstElement, indexOfLastElement)
+        console.log(entriesOnSelectedPage)
+        return entriesOnSelectedPage
 
-        return console.log(entriesOnSelectedPage)
     }
 
 }
